@@ -1,0 +1,34 @@
+def getName():
+    name = input("Enter your name as 'First Middle Last: ")
+    names = name.split()
+    if len(names) == 3:
+        return [part.capitalize() for part in names]
+    else:
+        print("Invalid input")
+        return getName()
+#--------------------------------------------------------
+def getPhoneNum():
+   while True:
+    number = input("Please insert phone #, for example: 5188284181: ")
+    if len(number) == 10:
+        return number
+    elif len(number) > 10:
+        print("Too many digits - please reenter")
+    elif len(number) < 10:
+        print("Insufficient length - please reenter")
+#-------------------------------------------------------
+def parseName(names):
+    first, middle, last = names
+    initials = [name_part[0] for name_part in names]
+    return first, middle, last, initials
+#-------------------------------------------------------
+def display():
+    names = getName()
+    phone = getPhoneNum()
+    first, middle, last, initials = parseName(names)
+    print("You entered: ", names)
+    print("Your initials are: ", initials)
+    print('\n')
+    print("Displayed with last name first: ", last + "," + first + "," + middle[0])
+    print("Your phone number is: " + "(" + phone[:3] + ")" + phone[3:6] + "-" + phone[6:])
+display()
